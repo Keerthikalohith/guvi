@@ -5,7 +5,7 @@
         font-family: inherit;
         display: block;
         text-align: center;
-        text-decoration: none;
+        text-decoration: none;  
         
 }
 *{
@@ -20,4 +20,7 @@ body{
 }
 ::placeholder{
     opacity: 0.5 !important;
+}
+#mobile::-webkit-inner-spin-button{
+    display:none;
 }

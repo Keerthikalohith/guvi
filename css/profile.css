@@ -13,6 +13,13 @@ body{
         text-decoration: none;
         
 }
+/* pseudo element selector */
 ::placeholder{
     opacity:0.5 !important;
+}
+#Percentage::-webkit-inner-spin-button{
+    display:none;
+}
+#age::-webkit-inner-spin-button{
+    display:none;
 }

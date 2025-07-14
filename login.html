@@ -17,15 +17,23 @@
         <h1>Login</h1>
         <p class="account d-block fs-6 "  >Don't have an account? <a href="register.html" class="sign" >Signup</a></p>
     
-    <form>
+    <form id="loginForm">
       
         <label for="email" class="field p-1 mt-1 "> Email Address</label><br>
-        <input type="text" id="email" class="primary form-control " placeholder="Enter your email address" ><br><br>
+        <input type="email" id="email" class="primary form-control " placeholder="Enter your email address" >
+        <p class="text-danger d-none" id="invalidEmail">Enter valid email id</p>
         <label for="password" class="field">Password</label><br>
-        <input type="text" id="password" class="primary mb-2 form-control" placeholder="Enter your password"><br>
+        <input type="text" id="password" class="primary mb-2 form-control" placeholder="Enter your password" minlength="5" maxlength="13">
+        <p class="text-danger d-none" id="invalidPassword">Enter valid password </p>
         <a href="" class="account p-1 my-5">Forgot password?</a><br>
         <button  id="log" class="p-1 my-3 p-2">Login </button><br>
     </form>
     </div>
 </body>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+  <script src="login.js"></script>
+
 </html>
