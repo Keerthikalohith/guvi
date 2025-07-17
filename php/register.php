@@ -1,26 +1,45 @@
 <?php
-// ini_set('display_errors', 1);    
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: *');
+
+require_once "header.php";
+
 $payload = $_POST;
-$name = $_POST["name"] ??"";
-$email = $_POST["email"] ??"";
-$mobile = $_POST["mobile"] ??"";
-$gender = $_POST["gender"] ??"";
-$password = $_POST["password"] ??"" ;
-$confirmPass = $_POST["confirmPass"] ??"";
-$mysqli = new mysqli("localhost","root","","guvi");
-$selectResult = "SELECT `email`FROM `users` WHERE `email`='$email'";
-$emailResult= $mysqli->query($selectResult);
+$name = $_POST["name"] ? $_POST["name"] : "";
+$email = $_POST["email"] ? $_POST["email"] : "";
+$mobile = $_POST["mobile"] ? $_POST["mobile"] : "";
+$gender = $_POST["gender"] ? $_POST["gender"] : "";
+$password = $_POST["password"] ? $_POST["password"] : "";
+
+$selectResult = "SELECT `email`FROM `users` WHERE `email` = ?";
+$stmt = $mysqli->prepare($selectResult);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$emailResult= $stmt->get_result();
 $emailResultArray = iterator_to_array($emailResult);
-if($emailResultArray && $emailResultArray[0]&& $emailResultArray[0]["email"]){
-    echo "USER_ALREADY_REGISTER";
-}else{
-    $sql ="INSERT INTO `users`(`name`,`email`,`mobileno`,`gender`,`password`) VALUES('$name','$email','$mobile','$gender','$password')";
-    $results = $mysqli->query($sql);
-    echo "SUCCESSFULLY_REGISTER";
+if ($emailResultArray && $emailResultArray[0] && $emailResultArray[0]["email"]) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "USER_ALREADY_REGISTER"
+    ]);
+} else {
+    $sql ="INSERT INTO `users`(`email`,`password`) VALUES(?,?)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+
+    $writeObj = new MongoDB\Driver\BulkWrite();
+	$writeObj->insert([
+        "email" => $email,
+        "password" => $password,
+        "name" => $name,
+        "mobile" => $mobile,
+        "gender" => $gender
+    ]);
+    $cursor = $mongo->executeBulkWrite("guvi.users", $writeObj);
+    echo json_encode([
+        "status" => "success",
+        "message" => "SUCCESSFULLY_REGISTER"
+    ]);
     
 }
+
 ?>

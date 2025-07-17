@@ -5,13 +5,13 @@ body{
     display: flex;
 }
 .profile{
-            background-color:#0DBA4B ;
-        color: white;
-        border-style: none;
-        font-family: inherit;
-        text-align: center;
-        text-decoration: none;
-        
+    background-color:#0DBA4B ;
+    color: white;
+    border-style: none;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    
 }
 /* pseudo element selector */
 ::placeholder{

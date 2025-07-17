@@ -5,20 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <link rel="stylesheet" href="css/profile.css">
-            <title>Document</title>
+            <title>GUVI Profile</title>
 
         
     </head>
 <body class="d-flex flex-column justify-content-center align-items-center" >
      <h1>Guvi Intern</h1>
      <h2>Welcome to profile page</h2>
+     <p class="text-left">Hello <span id="greeting"></span>, <a id="logout" href="#">Logout</a></p>
      <div>
         <form action="" id="profileForm">
             <div class="my-3">
-                Username: <input type="text"  id="name" minlength="5" maxlength="25" placeholder="Enter your name" class="field w-100 form-control my-1">
+                Username: <input type="text"  id="name" minlength="3" maxlength="25" placeholder="Enter your name" class="field w-100 form-control my-1">
                 <p class="text-danger d-none" id="invalidName">Enter name</p>
                 Email Id:<input type="text"  id="email" minlength="2" maxlength="1000" placeholder="Enter your emailid"class="field w-100 form-control my-1">
                 <p class="text-danger d-none" id="invalidEmail">Enter email</p>
+                <div class = "mt-1 mb-2 ">
+                    <label for="text" class="gen ">Gender</label>
+                    <input type="radio" name="gen1"  value="male" id="male">
+                    <label for="radio"> Male </label>
+                    <input type="radio" value="female" id="female" name="gen1"> 
+                    <label for="radio"> Female </label>
+                    <input type="radio" value="other" id="other" name="gen1">
+                    <label for="radio"> Others </label><br>
+                </div>
+                <p class="text-danger d-none" id="invalidGender" >Please select a gender!</p>
                 Age: <input type="number" id="age"class="field w-100 form-control my-1" >
                 <p class="text-danger d-none" id="invalidage">Enter age</p>
                 Date of birth: <input type="text"  id="DoB" placeholder="DD-MM-YYYY" class="field w-100 form-control my-1">
@@ -30,10 +41,12 @@
                 Percentage:<input type="number" id="Percentage" maxlength="3" class="field w-100 form-control mt-1 mb-3">
                 <p class="text-danger d-none" id="invalidPercentage">Enter Percentage</p>
                 <div id="backlog1">
-                Do you have current backlog?  
-                <input type="radio" id="backlog" class="ms-2" name="gen" value="yes">
-                <label for="Yes"> Yes</label>
-                <label for="No"> <input type="radio" id="backlog" name="gen" value="No">No</label><br>
+                    Do you have current backlog?  
+                    <input type="radio" id="backlog" class="ms-2" name="gen" value="yes">
+                    <label for="Yes"> Yes</label>
+                    <label for="No"> <input type="radio" id="backlog" name="gen" value="No">No</label><br>
+                    <p class="text-danger d-none" id="invalidBacklog">Enter Backlog</p>
+                </div>
                 <div>
                     <button id="reg" type="submit" class="profile w-100 mt-4 p-1 d-block"> Submit</button>
             </div>
@@ -46,5 +59,5 @@
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
   crossorigin="anonymous"></script>
 
-    <script src="profile.js"></script>
+    <script src="js/profile.js"></script>
 </html>

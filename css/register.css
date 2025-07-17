@@ -1,18 +1,18 @@
 .reg{
-        background-color:#0DBA4B ;
-        color: white;
-        border-style: none;
-        font-family: inherit;
-        display: block;
-        text-align: center;
-        text-decoration: none;  
-        
+    background-color:#0DBA4B ;
+    color: white;
+    border-style: none;
+    font-family: inherit;
+    display: block;
+    text-align: center;
+    text-decoration: none;  
+    
 }
-*{
-     box-sizing: border-box; 
+* {
+    box-sizing: border-box; 
 }
 input.secondary{
-
+    
     margin-bottom: 1rem;
 }
 body{
